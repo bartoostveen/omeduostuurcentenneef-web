@@ -13,13 +13,13 @@
   <h1 class="justify-self-center text-center">Bart Oostveen's placeholder</h1>
 
   <div class="flex gap-4 justify-self-center">
-    <a href="https://github.com/25huizengek1">
+    <a href="https://github.com/bartoostveen">
       <Button class="cursor-pointer" variant="outline"><GitHubIcon /></Button>
     </a>
     <a href="mailto:bart@bartoostveen.nl" rel="nofollow">
       <Button class="cursor-pointer" variant="outline"><EmailIcon /></Button>
     </a>
-    <a href="https://matrix.to/#/@bartoostveen:matrix.org">
+    <a href="https://matrix.to/#/@bart:bartoostveen.nl">
       <Button class="cursor-pointer" variant="outline"><ChatIcon /></Button>
     </a>
   </div>
