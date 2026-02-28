@@ -30,7 +30,7 @@ async function handleWebhookRequest(request: WebhookRequest) {
   if (
     !request.issue ||
     request.action != "opened" ||
-    request.repository?.full_name != "25huizengek1/ViTune"
+    request.repository?.full_name != "bartoostveen/ViTune"
   )
     return;
 
