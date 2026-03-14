@@ -48,9 +48,6 @@
             inherit system;
             overlays = [
               inputs.bun2nix.overlays.default
-              (_final: prev: {
-                nodejs = prev.nodejs_25;
-              })
             ];
           };
 
@@ -60,7 +57,7 @@
 
           devShells.default = pkgs.mkShell {
             packages = with pkgs; [
-              nodejs
+              nodejs_24
               bun
             ];
           };
