@@ -24,6 +24,11 @@
     </a>
   </div>
 
+  <div class="flex gap-4 justify-self-center">
+    <img src="https://internet.nl/static/embed-badge-websitetest.svg" alt="100% website test internet.nl" />
+    <img src="https://internet.nl/static/embed-badge-emailtest.svg" alt="100% email test internet.nl" />
+  </div>
+
   <p class="lead">
     Hi, my name is Bart Oostveen. If you want to contact me, you should use one of the above links.
   </p>
