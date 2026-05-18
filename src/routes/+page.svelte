@@ -2,7 +2,7 @@
   import Button from "$lib/components/ui/button/button.svelte";
   import DarkModeToggle from "../components/DarkModeToggle.svelte";
 
-  import GitHubIcon from "@lucide/svelte/icons/github";
+  import GitBranchIcon from "@lucide/svelte/icons/git-branch";
   import EmailIcon from "@lucide/svelte/icons/mail";
   import ChatIcon from "@lucide/svelte/icons/message-circle";
 </script>
@@ -13,8 +13,8 @@
   <h1 class="justify-self-center text-center">Bart Oostveen's placeholder</h1>
 
   <div class="flex gap-4 justify-self-center">
-    <a href="https://github.com/bartoostveen">
-      <Button class="cursor-pointer" variant="outline"><GitHubIcon /></Button>
+    <a href="https://git.bartoostveen.nl/bart">
+      <Button class="cursor-pointer" variant="outline"><GitBranchIcon /></Button>
     </a>
     <a href="mailto:bart@bartoostveen.nl" rel="nofollow">
       <Button class="cursor-pointer" variant="outline"><EmailIcon /></Button>
