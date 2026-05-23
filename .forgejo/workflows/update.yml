@@ -24,16 +24,17 @@ jobs:
       - name: nix flake update
         run: nix flake update --commit-lock-file
       - name: send PR
-        env:
-          PR_TOKEN: ${{ secrets.PR_TOKEN }}
         run: |-
           base="$(git branch --show-current)"
           if [[ "$(git rev-list origin/"$base"..HEAD --count)" -ne 0 ]]; then
             head="ci-flake-update"
 
+            git switch -c "$head"
+            git push --force origin "$head"
+
             existing_prs="$(
               curl --silent --fail-with-body \
-                -H "Authorization: token $PR_TOKEN" \
+                -H "Authorization: token $FORGEJO_TOKEN" \
                 "$FORGEJO_SERVER_URL/api/v1/repos/$FORGEJO_REPOSITORY/pulls?state=open"
             )"
 
@@ -53,9 +54,6 @@ jobs:
 
             pr_body="$(printf '%s\n\n## flake.lock diff\n```diff\n%s\n```' "$pr_body" "$(git diff $base..$head)")"
 
-            git switch -c "$head"
-            git push --force origin "$head"
-
             jq -n \
               --arg base "$base" \
               --arg head "$head" \
@@ -68,7 +66,7 @@ jobs:
                 body: $body
               }' |
             curl --fail-with-body "$FORGEJO_SERVER_URL/api/v1/repos/$FORGEJO_REPOSITORY/pulls" \
-              -H "Authorization: token $PR_TOKEN" \
+              -H "Authorization: token $FORGEJO_TOKEN" \
               -H "Content-Type: application/json" \
               --data @-
           fi
