@@ -8,4 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - run: nix fmt -L --accept-flake-config --log-format raw -- --ci
+      - name: ESLint/Prettier
+        run: |
+          set -euo pipefail
+
+          nix run .#format --accept-flake-config
+
+          if ! git diff --quiet --exit-code; then
+            echo "ESLint/Prettier wrote changes, failing!"
+            exit 1
+          fi
       - run: nix flake check --accept-flake-config --log-format raw

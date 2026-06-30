@@ -45,7 +45,7 @@
         {
           pkgs,
           system,
-          lib,
+          self',
           ...
         }:
 
@@ -65,26 +65,9 @@
 
           treefmt = {
             programs.nixfmt.enable = true;
-            programs.yamlfmt.enable = true;
-            programs.prettier.enable = true;
-            settings.formatter.eslint = {
-              command = lib.getExe pkgs.bun;
-              options = [
-                "x"
-                "eslint"
-                "--fix"
-              ];
-              includes = [
-                "*.js"
-                "*.cjs"
-                "*.mjs"
-                "*.ts"
-                "*.cts"
-                "*.mts"
-                "*.jsx"
-                "*.tsx"
-                "*.svelte"
-              ];
+            programs.deadnix = {
+              enable = true;
+              excludes = [ "bun.nix" ];
             };
           };
 
@@ -92,7 +75,11 @@
             packages = deps;
           };
 
-          packages.default = pkgs.callPackage ./package.nix { };
+          packages = {
+            default = pkgs.callPackage ./package.nix { };
+            inherit (self'.packages.default) format;
+          };
+
           apps.bun2nix-update = {
             type = "app";
             program = pkgs.writeShellApplication {
