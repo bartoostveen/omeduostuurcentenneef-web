@@ -45,7 +45,6 @@
         {
           pkgs,
           system,
-          self',
           ...
         }:
 
@@ -75,10 +74,7 @@
             packages = deps;
           };
 
-          packages = {
-            default = pkgs.callPackage ./package.nix { };
-            inherit (self'.packages.default) format;
-          };
+          packages.default = pkgs.callPackage ./package.nix { };
 
           apps.bun2nix-update = {
             type = "app";
