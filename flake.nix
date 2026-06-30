@@ -63,6 +63,20 @@
           };
 
           packages.default = pkgs.callPackage ./package.nix { };
+          apps.bun2nix-update = {
+            type = "app";
+            program = pkgs.writeShellApplication {
+              name = "bun2nix-update";
+              runtimeInputs = with pkgs; [
+                nodejs_24
+                bun
+              ];
+              text = ''
+                bun i
+                bun run bun2nix:update
+              '';
+            };
+          };
         };
     };
 }

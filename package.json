@@ -46,7 +46,8 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write . && eslint . --fix",
     "lint": "prettier --check . && eslint .",
-    "postinstall": "bun2nix -o bun.nix"
+    "bun2nix:update": "bun2nix -o bun.nix",
+    "postinstall": "bun run bun2nix:update"
   },
   "type": "module"
 }
