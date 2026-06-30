@@ -43,6 +43,13 @@
 
       perSystem =
         { pkgs, system, ... }:
+
+        let
+          deps = with pkgs; [
+            nodejs_24
+            bun
+          ];
+        in
         {
           _module.args.pkgs = import inputs.nixpkgs {
             inherit system;
@@ -56,10 +63,7 @@
           };
 
           devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              nodejs_24
-              bun
-            ];
+            packages = deps;
           };
 
           packages.default = pkgs.callPackage ./package.nix { };
@@ -67,12 +71,8 @@
             type = "app";
             program = pkgs.writeShellApplication {
               name = "bun2nix-update";
-              runtimeInputs = with pkgs; [
-                nodejs_24
-                bun
-              ];
+              runtimeInputs = deps;
               text = ''
-                bun i
                 bun run bun2nix:update
               '';
             };
