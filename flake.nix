@@ -42,7 +42,12 @@
       ];
 
       perSystem =
-        { pkgs, system, ... }:
+        {
+          pkgs,
+          system,
+          lib,
+          ...
+        }:
 
         let
           deps = with pkgs; [
@@ -61,6 +66,26 @@
           treefmt = {
             programs.nixfmt.enable = true;
             programs.yamlfmt.enable = true;
+            programs.prettier.enable = true;
+            settings.formatter.eslint = {
+              command = lib.getExe pkgs.bun;
+              options = [
+                "x"
+                "eslint"
+                "--fix"
+              ];
+              includes = [
+                "*.js"
+                "*.cjs"
+                "*.mjs"
+                "*.ts"
+                "*.cts"
+                "*.mts"
+                "*.jsx"
+                "*.tsx"
+                "*.svelte"
+              ];
+            };
           };
 
           devShells.default = pkgs.mkShell {
