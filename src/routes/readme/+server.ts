@@ -10,7 +10,7 @@ export const GET: RequestHandler = async () => {
   if (!endpoint) {
     error(500, "Server is not capable of generating readme");
   }
-  if (response && (Date.now() - lastFetched) <= dt) {
+  if (response && Date.now() - lastFetched <= dt) {
     return new Response(response);
   }
   try {

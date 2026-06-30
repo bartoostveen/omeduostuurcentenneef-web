@@ -25,8 +25,14 @@
   </div>
 
   <div class="flex gap-4 justify-self-center">
-    <img src="https://internet.nl/static/embed-badge-websitetest.svg" alt="100% website test internet.nl" />
-    <img src="https://internet.nl/static/embed-badge-emailtest.svg" alt="100% email test internet.nl" />
+    <img
+      src="https://internet.nl/static/embed-badge-websitetest.svg"
+      alt="100% website test internet.nl"
+    />
+    <img
+      src="https://internet.nl/static/embed-badge-emailtest.svg"
+      alt="100% email test internet.nl"
+    />
   </div>
 
   <p class="lead">
