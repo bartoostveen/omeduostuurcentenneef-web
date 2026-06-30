@@ -1,5 +1,4 @@
 name: update bun2nix lock file
-
 on:
   workflow_dispatch:
   push:
@@ -16,7 +15,6 @@ on:
       - "go.sum"
       - "**/*.nix"
       - ".forgejo/workflows/update-bun2nix.yml"
-
 jobs:
   update-bun-nix:
     if: |
@@ -29,7 +27,6 @@ jobs:
         with:
           gpg-privkey: ${{ secrets.GPG_PRIVKEY }}
           gpg-key-id: ${{ vars.GPG_KEY_ID }}
-
       - name: perform update
         id: update
         run: |

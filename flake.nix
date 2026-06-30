@@ -60,6 +60,7 @@
 
           treefmt = {
             programs.nixfmt.enable = true;
+            programs.yamlfmt.enable = true;
           };
 
           devShells.default = pkgs.mkShell {
