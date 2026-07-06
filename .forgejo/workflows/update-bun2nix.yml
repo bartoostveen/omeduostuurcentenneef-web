@@ -5,14 +5,16 @@ on:
     branches:
       - master
     paths:
-      - "go.mod"
-      - "go.sum"
+      - "package.json"
+      - "bun.lock"
+      - "bun.nix"
       - "**/*.nix"
       - ".forgejo/workflows/update-bun2nix.yml"
   pull_request:
     paths:
-      - "go.mod"
-      - "go.sum"
+      - "package.json"
+      - "bun.lock"
+      - "bun.nix"
       - "**/*.nix"
       - ".forgejo/workflows/update-bun2nix.yml"
 jobs:
