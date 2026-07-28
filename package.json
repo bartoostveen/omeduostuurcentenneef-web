@@ -13,7 +13,6 @@
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^26.0.0",
     "bits-ui": "^2.18.1",
-    "bun2nix": "^2.1.0",
     "clsx": "^2.1.1",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
@@ -45,9 +44,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write . && eslint . --fix",
-    "lint": "prettier --check . && eslint .",
-    "bun2nix:update": "bun x bun2nix -o bun.nix",
-    "postinstall": "bun run bun2nix:update"
+    "lint": "prettier --check . && eslint ."
   },
   "type": "module"
 }

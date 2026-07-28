@@ -1,4 +1,4 @@
-name: update bun2nix lock file
+name: update pnpm hashes
 on:
   workflow_dispatch:
   push:
@@ -6,17 +6,15 @@ on:
       - master
     paths:
       - "package.json"
-      - "bun.lock"
-      - "bun.nix"
+      - "pnpm-lock.yaml"
       - "**/*.nix"
-      - ".forgejo/workflows/update-bun2nix.yml"
+      - ".forgejo/workflows/update-hashes.yml"
   pull_request:
     paths:
       - "package.json"
-      - "bun.lock"
-      - "bun.nix"
+      - "pnpm-lock.yaml"
       - "**/*.nix"
-      - ".forgejo/workflows/update-bun2nix.yml"
+      - ".forgejo/workflows/update-hashes.yml"
 jobs:
   update-bun-nix:
     if: |
@@ -37,8 +35,8 @@ jobs:
           git fetch origin "$branch"
           git switch "$branch" 2>/dev/null || git switch -c "$branch" --track "origin/$branch"
 
-          echo "Updating vendor hashes"
-          nix run .#bun2nix-update
+          echo "Updating pnpm hashes"
+          nix run nixpkgs#nix-update -- default -F --version=skip
 
           if git diff --quiet --exit-code; then
             echo "Hashes are still up to date"
@@ -46,5 +44,5 @@ jobs:
           fi
 
           git add .
-          git commit -m "chore(deps): update bun.nix"
+          git commit -m "chore(deps): update pnpm hashes"
           git push --force-with-lease origin "$branch"
