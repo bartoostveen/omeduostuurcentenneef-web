@@ -24,7 +24,7 @@
       ];
 
       perSystem =
-        { pkgs, ... }:
+        { self', pkgs, ... }:
 
         let
           packageVersion = (./package.json |> builtins.readFile |> builtins.fromJSON).version;
@@ -45,6 +45,21 @@
           packages.default = (pkgs.callPackage ./package.nix { }).overrideAttrs {
             version = "${packageVersion}-${self.shortRev or self.dirtyShortRev or "dirty-norev"}";
             __intentionallyOverridingVersion = true;
+          };
+
+          checks.pnpm = pkgs.stdenv.mkDerivation {
+            pname = "omeduoweb-pnpm-checked";
+
+            inherit (self'.packages.default)
+              version
+              src
+              pnpmDeps
+              nativeBuildInputs
+              ;
+
+            installPhase = ''
+              pnpm run check > $out
+            '';
           };
         };
     };
