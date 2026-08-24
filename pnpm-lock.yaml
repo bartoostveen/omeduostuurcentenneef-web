@@ -675,9 +675,6 @@ packages:
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
 
-  '@types/unist@3.0.3':
-    resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
-
   '@typescript-eslint/eslint-plugin@8.67.0':
     resolution: {integrity: sha512-Un7Heoyj65NREbKAyIrFxeM143NZpExWmy1Nep4DLeQOeLlTeumPjoNKnBrU5D5moWXbPJgRa5Uwcdu0faVNGQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -2201,7 +2198,7 @@ snapshots:
 
   '@types/mdast@4.0.4':
     dependencies:
-      '@types/unist': 3.0.3
+      '@types/unist': 2.0.11
 
   '@types/node@26.2.0':
     dependencies:
@@ -2212,8 +2209,6 @@ snapshots:
   '@types/trusted-types@2.0.7': {}
 
   '@types/unist@2.0.11': {}
-
-  '@types/unist@3.0.3': {}
 
   '@typescript-eslint/eslint-plugin@8.67.0(@typescript-eslint/parser@8.67.0(eslint@10.9.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.9.0(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
