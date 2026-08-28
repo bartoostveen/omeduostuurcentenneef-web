@@ -30,7 +30,7 @@
 
   <p>
     This is officially the worst url generator you have ever seen, but it works and I don't want to
-    style this more and it is right now.
+    style this.
   </p>
 
   <label>
