@@ -1,15 +1,16 @@
 {
   lib,
   stdenv,
-  pnpm_11,
+  pnpm_12,
   fetchPnpmDeps,
   pnpmConfigHook,
-  nodejs,
+  nodejs_26,
   makeWrapper,
 }:
 
 let
-  pnpm = pnpm_11;
+  pnpm = pnpm_12;
+  nodejs = nodejs_26;
 
   inherit (lib) getExe;
 in
@@ -32,8 +33,8 @@ stdenv.mkDerivation (finalAttrs: {
   pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     inherit pnpm;
-    fetcherVersion = 4;
-    hash = "sha256-mKhc3HEUTHCSHcaUOxEqgZxe3Qr/+IE4aQ66FeIYzqc=";
+    fetcherVersion = 5;
+    hash = "sha256-jaTPPK3MLczys7nal8YlZpbMt63/mdTmMiwxNT++0pI=";
   };
 
   buildPhase = ''
