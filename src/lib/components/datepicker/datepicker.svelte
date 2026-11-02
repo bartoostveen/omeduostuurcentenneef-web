@@ -11,10 +11,10 @@
   });
 
   let value = $state<DateValue>();
-  const { onValueUpdate } = $props<{ onValueUpdate: (arg0: DateValue) => void }>();
+  const { onValueUpdate }: { onValueUpdate: (newValue: DateValue) => void } = $props();
 
   $effect(() => {
-    onValueUpdate(value);
+    if (value) onValueUpdate(value);
   });
 </script>
 
